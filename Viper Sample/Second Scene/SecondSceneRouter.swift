@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol SecondSceneRoutingLogic {}
+protocol SecondSceneDataPassing {
+    var dataSource: SecondSceneDataSource? { get set }
+}
+
+class SecondSceneRouter: SecondSceneRoutingLogic, SecondSceneDataPassing {
+    var vc: SecondSceneViewController?
+    var dataSource: SecondSceneDataSource?
+    
+    var userInput: String?
+}

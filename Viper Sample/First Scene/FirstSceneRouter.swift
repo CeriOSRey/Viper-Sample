@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol FirstSceneRoutingProtocol {
     func navigateToNextScrene()
@@ -20,7 +21,9 @@ class FirstSceneRouter: FirstSceneRoutingProtocol, FirstSceneDataPassing {
     var dataSource: FirstSceneDataSource?
     
     func navigateToNextScrene() {
-        let secondScene = SecondSceneViewController()
+//        let secondScene = SecondSceneViewController()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let secondScene = sb.instantiateViewController(withIdentifier: "SecondSceneViewController") as? SecondSceneViewController else { return }
         secondScene.router?.dataSource?.userInput = self.dataSource?.userInput
         vc?.navigationController?.pushViewController(secondScene, animated: true)
     }
